@@ -1,0 +1,53 @@
+<div class="app-container">
+    <div class="app-header">
+      <p class="text">Select any templates</p>
+      <div class="templates-wrapper">
+        <div class="template-container" *ngFor="let template of templates">
+          <img
+            [ngClass]="selectedSrc == template.src ? 'active' : ''"
+            class="template"
+            src="{{ template.src }}"
+            alt="{{ template.id }}"
+            (click)="selectTemplate(template.src)"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="app-body" *ngIf="isTemplateSelected">
+      <form class="input-container" [formGroup]="formdata">
+        <div class="input-wrapper">
+          <label>Offer Heading</label>
+          <input placeholder="Enter heading" formControlName="offerHeading" />
+        </div>
+        <div class="input-wrapper">
+          <label>Offer Discount</label>
+          <input placeholder="Enter discount" formControlName="offerDiscount" />
+        </div>
+  
+        <div class="btn-container">
+          <button class="preview" [disabled]="formdata.invalid" (click)="clickPreview(formdata.value)">
+            Preview
+          </button>
+          <button class="save" [disabled]="formdata.invalid" (click)="saveTemplate()">Save</button>
+        </div>
+      </form>
+    </div>
+  
+    <div class="modal-container" *ngIf="isOpenPopup">
+      <div class="modal-content">
+        <div class="preview-container">
+          <div class="preview-image">
+            <span class="close" (click)="clickPreview()">&times;</span>
+            <img src="{{ selectedSrc }}" alt="previewImg" />
+            <div class="offers-container">
+              <p class="offer-heading">{{ formdata.value.offerHeading }}</p>
+              <p class="offer-discount">{{ formdata.value.offerDiscount }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="save-btn">
+          <button (click)="saveTemplate()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>

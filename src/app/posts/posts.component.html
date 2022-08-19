@@ -1,0 +1,15 @@
+<div class="post-container">
+  <div class="Heading">
+    <h2>Saved Post</h2>
+  </div>
+  <div class="all-post">
+    <div class="post-wrapper" *ngFor="let post of savedPost">
+      <img class="delete-icon" src="../../assets/Icons/delete_icon.png" alt="delete-icon" (click)="postDelete(post.src)"/>
+      <img class="post-img" src="{{ post.src }}" />
+      <div class="offers-container">
+        <p class="offer-heading">{{ post.offerHeading }}</p>
+        <p class="offer-discount">{{ post.offerDiscount }}</p>
+      </div>
+    </div>
+  </div>
+</div>

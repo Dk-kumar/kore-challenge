@@ -1,0 +1,19 @@
+.Header-Container {
+  header {
+    background: black;
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .heading {
+    color: #fff;
+  }
+}
+
